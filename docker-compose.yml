@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:latest
+    container_name: testbank-db
+    restart: always
+    environment:
+      POSTGRES_DB: testbank
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB} -h 127.0.0.1 -p 5432" ]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 5s
+
+  api:
+    container_name: testbank-api
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: src/Bank.Api/Dockerfile
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Dev
+      ASPNETCORE_HTTP_PORTS: 8080
+      ConnectionStrings__BankDbContext: Host=db;Port=5432;Database=testbank;Username=postgres;Password=postgres
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/healthz"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  db-data:
