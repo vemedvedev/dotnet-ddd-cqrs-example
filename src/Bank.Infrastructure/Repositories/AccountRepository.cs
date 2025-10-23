@@ -27,7 +27,7 @@ public sealed class AccountRepository : IAccountRepository
     {
         IQueryable<Account> query = _context.Account;
 
-        query = asNoTracking ? query.AsNoTracking() : query.AsTracking();
+        query = asNoTracking ? query.AsNoTracking() : query;
 
         var account = await query.FirstOrDefaultAsync(a => a.Id == accountId, cancellationToken);
         return account ?? throw new AccountNotFoundException(accountId);
@@ -36,7 +36,7 @@ public sealed class AccountRepository : IAccountRepository
     public async Task<List<Account>> GetAccountsAsync(bool asNoTracking, CancellationToken cancellationToken)
     {
         IQueryable<Account> query = _context.Account;
-        query = asNoTracking ? query.AsNoTracking() : query.AsTracking();
+        query = asNoTracking ? query.AsNoTracking() : query;
 
         return await query.OrderByDescending(a => a.CreatedAt).ToListAsync(cancellationToken);
     }
