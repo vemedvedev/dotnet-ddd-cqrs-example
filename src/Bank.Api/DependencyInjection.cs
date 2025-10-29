@@ -1,11 +1,11 @@
-﻿using System.Diagnostics;
-using Bank.Api.ErrorHandling;
+﻿using Bank.Api.ErrorHandling;
 using Bank.Api.Validations;
 using Bank.Api.Validations.ConcreteValidators;
 using Bank.Api.Validations.Services;
 using Bank.Infrastructure.Persistence;
+using Bank.Shared.Notifications;
+using Bank.Shared.Notifications.Implementations;
 using FluentValidation;
-using Microsoft.AspNetCore.Http.Features;
 
 namespace Bank.Api;
 
@@ -16,6 +16,7 @@ public static class DependencyInjection
         RegisterValidators(services);
         RegisterExceptionHanders(services);
         RegisterHealthChecks(services);
+        RegisterNotification(services);
     }
 
     private static void RegisterValidators(this IServiceCollection services)
@@ -34,5 +35,10 @@ public static class DependencyInjection
     {
         services.AddHealthChecks()
             .AddDbContextCheck<BankDbContext>("BankDbHealthCheck");
+    }
+
+    private static void RegisterNotification(this IServiceCollection services)
+    {
+        services.AddScoped<INotificationPublisher, NotificationPublisher>();
     }
 }

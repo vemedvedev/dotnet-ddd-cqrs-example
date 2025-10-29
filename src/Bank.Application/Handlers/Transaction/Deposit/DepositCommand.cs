@@ -1,3 +1,5 @@
+using Bank.Application.Shared;
+
 namespace Bank.Application.Handlers.Transaction.Deposit;
 
 public record DepositCommand : ICommand<Guid>

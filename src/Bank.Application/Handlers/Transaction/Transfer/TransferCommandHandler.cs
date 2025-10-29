@@ -1,4 +1,5 @@
 using Bank.Application.Repositories;
+using Bank.Application.Shared;
 
 namespace Bank.Application.Handlers.Transaction.Transfer;
 

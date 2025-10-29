@@ -1,4 +1,5 @@
 using Bank.Application.Handlers;
+using Bank.Application.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

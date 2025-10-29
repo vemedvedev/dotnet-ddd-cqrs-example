@@ -1,3 +1,4 @@
+using Bank.Domain.AccountAggregate.DomainEvents;
 using Bank.Domain.Base;
 using Bank.Domain.Exceptions;
 

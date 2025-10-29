@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Bank.Application.Handlers;
 using Bank.Application.Handlers.Transaction.Deposit;
 using Bank.Application.Services.OptimisticConcurrency;
+using Bank.Application.Shared;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;

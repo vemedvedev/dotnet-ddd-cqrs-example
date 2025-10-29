@@ -6,6 +6,7 @@ using Bank.Application.Handlers;
 using Bank.Application.Handlers.Transaction.Deposit;
 using Bank.Application.Handlers.Transaction.Withdrawal;
 using Bank.Application.Handlers.Transaction.Transfer;
+using Bank.Application.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bank.Api.Controllers;

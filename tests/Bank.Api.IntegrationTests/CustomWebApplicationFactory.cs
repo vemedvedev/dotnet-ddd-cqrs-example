@@ -31,7 +31,7 @@ public class CustomWebApplicationFactory<TProgram>
                 services.Remove(dbContextDescriptor);
             }
 
-            services.AddDbContextPool<BankDbContext>(options =>
+            services.AddDbContext<BankDbContext>(options =>
                 options.UseNpgsql(_dbContainer.GetConnectionString()));
         });
 

@@ -1,3 +1,5 @@
+using Bank.Application.Shared;
+
 namespace Bank.Application.Handlers.Account.Create;
 
 public record CreateAccountCommand : ICommand<long>

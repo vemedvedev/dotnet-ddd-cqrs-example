@@ -1,3 +1,5 @@
+using Bank.Application.Shared;
+
 namespace Bank.Application.Handlers.Transaction.Transfer;
 
 public record TransferCommand : ICommand<Guid>

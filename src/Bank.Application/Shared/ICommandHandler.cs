@@ -1,4 +1,4 @@
-namespace Bank.Application.Handlers;
+namespace Bank.Application.Shared;
 
 public interface ICommandHandler<in TCommand, TResult> where TCommand : ICommand<TResult>
 {

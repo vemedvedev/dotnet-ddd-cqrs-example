@@ -1,5 +1,6 @@
 using Bank.Application.Handlers.Account.Create.Exceptions;
 using Bank.Application.Repositories;
+using Bank.Application.Shared;
 
 namespace Bank.Application.Handlers.Account.Create;
 

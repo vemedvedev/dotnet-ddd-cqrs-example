@@ -5,7 +5,11 @@ using Bank.Application.Handlers.Account.GetListAccount;
 using Bank.Application.Handlers.Transaction.Deposit;
 using Bank.Application.Handlers.Transaction.Withdrawal;
 using Bank.Application.Handlers.Transaction.Transfer;
+using Bank.Application.Handlers.Transaction.Transfer.DomainEventHandlers;
 using Bank.Application.Services.OptimisticConcurrency;
+using Bank.Application.Shared;
+using Bank.Domain.AccountAggregate.DomainEvents;
+using Bank.Shared.Notifications;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bank.Application;
@@ -40,5 +44,6 @@ public static class DependencyInjection
 
         services.AddKeyedScoped<ICommandHandler<TransferCommand, Guid>, TransferCommandHandler>(nameof(TransferCommand));
         services.AddScoped<ICommandHandler<TransferCommand, Guid>>(sp => new OptimisticConcurrencyHandlerDecorator<TransferCommand, Guid>(sp));
+        services.AddScoped<INotificationHandler<FundsTransferEvent>, FundsTransferHandler>();
     }
 }

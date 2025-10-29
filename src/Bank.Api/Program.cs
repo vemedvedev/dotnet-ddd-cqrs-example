@@ -63,4 +63,7 @@ void ApplyMigrations(WebApplication app)
 }
 
 // For integration tests
-public partial class Program;
+namespace Bank.Api
+{
+    public partial class Program;
+}

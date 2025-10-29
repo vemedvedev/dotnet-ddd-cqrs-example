@@ -1,3 +1,4 @@
+using Bank.Domain.AccountAggregate.DomainEvents;
 using Bank.Domain.Base;
 
 namespace Bank.Domain.TransactionAggregate;
@@ -56,6 +57,17 @@ public class Transaction : BaseEntity, IAggregateRoot
                 TransactionLog.CreateTransactionLog(toAccountId, amount, toBefore, toAfter)
             }
         };
+
+        tr.AddDomainEvent(new FundsTransferEvent
+        {
+            FromAccountId = fromAccountId,
+            ToAccountId = toAccountId,
+            Amount = amount,
+            FromBalanceBefore = fromBefore,
+            FromBalanceAfter = fromAfter,
+            ToBalanceBefore = toBefore,
+            ToBalanceAfter = toAfter
+        });
 
         return tr;
     }

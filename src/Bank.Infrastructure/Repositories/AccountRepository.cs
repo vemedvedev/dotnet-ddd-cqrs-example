@@ -1,3 +1,4 @@
+using System.Text;
 using Bank.Application.Handlers.Account.GetAccount.Exceptions;
 using Bank.Application.Repositories;
 using Bank.Domain.AccountAggregate;
@@ -43,6 +44,8 @@ public sealed class AccountRepository : IAccountRepository
 
     public void AddAccount(Account account)
     {
+        var s = new StringBuilder();
+        s.Append("te");
         _context.Account.Add(account);
     }
 }

@@ -7,6 +7,7 @@ using Bank.Application.Handlers;
 using Bank.Application.Handlers.Account.Create;
 using Bank.Application.Handlers.Account.GetAccount;
 using Bank.Application.Handlers.Account.GetListAccount;
+using Bank.Application.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Bank.Api.Controllers;
