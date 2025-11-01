@@ -44,8 +44,6 @@ public sealed class AccountRepository : IAccountRepository
 
     public void AddAccount(Account account)
     {
-        var s = new StringBuilder();
-        s.Append("te");
         _context.Account.Add(account);
     }
 }
